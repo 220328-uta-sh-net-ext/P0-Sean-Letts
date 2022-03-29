@@ -183,7 +183,7 @@
   - Startup Scripts
     - Script Execution Order
       - /etc/profile - It contains Linux system wide environment and startup programs. This file runs first when a user logs in to the system. This file also act as a system-wide profile file for the bash shell.
-      - /etc/profile.d - /etc/profile calls /etc/profile.d/. It is a directory and all scripts in this directory are called by /etc/profile using a for loop. This file runs second when a user logs in.
+      - /etc/profile.d - /etc/profile calls /etc/profile.d/. It is a directory and all scripts in this directory are called by /etc/profile using a [for loop] (https://bash.cyberciti.biz/guide/For_loop). This file runs second when a user logs in.
       - ~/.bash_profile or $HOME/.bash_profile - Finally, the file ~/.bash_profile is called in the users home directory ($HOME). This file runs third when a user logs in. This file calls ~/.bashrc in the users home directory.
 
         - Usage
