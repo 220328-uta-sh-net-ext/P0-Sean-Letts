@@ -52,3 +52,75 @@
   - . script.sh
 - bash -x script can also be used for debugging
 
+# The Shell Variables and Environment
+- Shell Variables
+- Commonly Used Shell Variables
+  - BASH_VERSION - Holds the version of this instance of bash.
+  - HOSTNAME - The name of the your computer.
+  - CDPATH - The search path for the cd command.
+  - HISTFILE - The name of the file in which command history is saved
+  - HISTFILESIZE - The maximum number of lines contained in the history file.
+  - HISTSIZE - The number of commands to remember in the command history. The default value is 500.
+  - HOME - The home directory of the current user.
+  - IFS - The Internal Field Separator that is used for word splitting after expansion and to split lines into words with the read builtin command. The default value is <space><tab><newline>.
+  - LANG - Used to determine the locale category for any category not specifically selected with a variable starting with LC_.
+  - PATH - The search path for commands. It is a colon-separated list of directories in which the shell looks for commands.
+  - PS1 - Your prompt settings.
+  - TMOUT - The default timeout for the read builtin command. Also in an interactive shell, the value is interpreted as the number of seconds to wait for input after issuing the command. If not input provided it will logout user.
+  - TERM - Your login terminal type.
+  - SHELL - Set path to login shell.
+  - DISPLAY - Set X display name
+  - EDITOR - Set name of default text editor.
+- Assignment Operators
+  - := means if the variable is empty, whatever is to the right is assigned to the variable on the left as a default value
+  - = can be used to assign a variable
+  - Null variables can be assigned with NAME=”” or NAME=
+- Variable Naming Conventions
+  - Must begin with and contain alphanumeric or underscore characters(s)
+  - Cannot contain special characters
+  - To print a variable type echo $VARIABLE_NAME or printf “%s\n” “$VAR_NAME”
+- Printing commands
+  - There are many ways to format print statements
+  - Can print all files with a certain ending with *.java for all java files, for example.
+  - Use single quotes for printing just text
+  - Use double quotes for text + variables
+  - Backslash can disable the effects of variables, making them be printed as text
+- Export
+  - All variables are defined as local
+  - Export allows you to export variables to other processes
+  - export -p = list of all names exported
+  - export -n NAME = remove NAME from exported list
+- Unset deletes variables
+- Read
+  - Allows user input to a variable that can be used elsewhere in the code with read -p
+  - Saved with chmod +x name.sh
+  - Run with ./name.sh
+  - Read -t 15 -p = a 15 second timer to input, before timing out
+  - Read -s = the text entered will now show up on screen
+  - Multiple inputs can be put into one variable
+    - If they are, they’re saved with IFS separating them (Internal Field Separator)
+  - read -r n1 n2 n3 names would split names between n1, n2 and n3 if it has 3 variables
+  - The IFS can be changed by saving the old IFS somewhere else (old=”$IFS”) and assigning it something new (IFS=:)
+- Shell Arithmetic Operations
+  - + : Addition
+  - "-" : Subtraction
+  - *: Multiplication
+  - /: Division
+  - %: Modulus. Checks if there is a remainder
+  - ++n/ - -n: pre increment operation
+  - n++/n - -: post increment operation
+  - n**x: exponentiation 
+- Creating integer Variables
+  - Using the declare command
+    - Declare -i y=10
+  - Echo $y
+- Create shell script called inmath
+  - Declare -i x=10
+  - Declare -i y=10
+  - Declare -i z=0
+  - z=$((x + y))
+  - Echo “$x + $y = $z”
+- Save and close. Run  as follows
+  - Chmod +x inmath.sh
+  - ./inmath.sh
+  - Samples: 10 + 10 = 20, 0 + 10=10
