@@ -124,3 +124,109 @@
   - Chmod +x inmath.sh
   - ./inmath.sh
   - Samples: 10 + 10 = 20, 0 + 10=10
+- Creating Constant Variables
+- Create constant variables using the readonly or declare commands
+ - Readonly command - can’t unset/delete
+    - Readonly var
+    - Readonly varName = value
+  - Declare 
+    - Declare -r var
+    - Declare -r varName =value
+- Bash Variable Existence check
+  - If the variable is not defined you can stop executing Bash script with the following syntax:
+    - ${varName?Error varName is not defined}
+    - ${varName:?Error varName is defined or is empty}
+  - This is useful for a sanity checking
+  - The script will stop executing if the variable is not defined.
+- Shell Environment
+  - Customizing Bash Shell Environments 
+    - Two types of shell variables
+      - Local Variables
+        - Used by shell and or user scripts. All user created variables are local unless exported using the export command.
+        - Use set to view all variables
+          - set
+        - Usually set in all caps
+          - Echo $SHELL
+          - Echo $MAIL
+        - Exported with the export command
+          - Export EDITOR=/usr/bin/vim
+          - Export DISPLAY=localhost:11,0 xeyes
+		
+      - Environment Variables
+        - Used by shell or user but they are also passed onto other command. Environment variables are passed to subprocesses or subshells.
+        - View with the env command
+        - Common Environment Variables
+          - HOME - home directory path
+          - PATH - set your executable search path
+          - PWD - your currently working directory
+          - [more](https://bash.cyberciti.biz/guide/Variables#Commonly_Used_Shell_Variables)
+	
+  - Recalling Command History
+    - Bash keeps a command history in ~/.bash_history or in the buffer
+    - history = an output of all commands saved in the history
+    - Use up and down to navigate
+    - Cltr-r searches for a particular command
+    - !! repeats last command
+    - !(something particular) will run something with that particular feature
+    - !(number) will run the command at that line number
+  - Path Name Expansion
+    - Curly Braces can be used to make multiple things with similar names
+    - Ex: echo file(1…5).txt = file1.txt file2.txt file3.txt file4.txt file5.txt
+  - Create and use aliases
+    - Alias allows users to give commands nicknames for easier use
+    - To create an alias do alias (letter)=’command_name’
+    - To remove an alias do unalias alias_name
+    - To permanently add an alias, place it in /etc/bashrc or or /etc/profile.d/useralias.sh
+    - To ignore an alias, use \ or “” around the command
+  - Tilde Expansion
+    - The tilde refers to your home directory file listing, or other user’s.
+  - Startup Scripts
+    - Script Execution Order
+      - /etc/profile - It contains Linux system wide environment and startup programs. This file runs first when a user logs in to the system. This file also act as a system-wide profile file for the bash shell.
+      - /etc/profile.d - /etc/profile calls /etc/profile.d/. It is a directory and all scripts in this directory are called by /etc/profile using a for loop. This file runs second when a user logs in.
+      - ~/.bash_profile or $HOME/.bash_profile - Finally, the file ~/.bash_profile is called in the users home directory ($HOME). This file runs third when a user logs in. This file calls ~/.bashrc in the users home directory.
+
+        - Usage
+          - Used to customize the environment in question
+          - Examples:
+            - Set PATH and PS1 (shell prompt) variables.
+            - Set default printer via PRINTER variable.
+            - Set default text editor via EDITOR variable.
+            - Set default pager via PAGER variable.
+            - Set default umask (file mode creation mask).
+            - Override and remove unwanted settings such as variables or aliases (undo changes).
+            - Set up environment.
+            - Set up aliases.
+            - Set up functions.
+
+           - Viewing dot (.) Files
+             - Use the following commands in the $HOME directory
+              - ls -a
+              - ls -A | less
+             - Viewing File Contents
+              - cat .bash_profile
+              - Cat $HOME/.bash_profile
+              - Cat ~/.bash_profile 
+		
+  - Using Aliases	
+      - Customize your bash by creating alias as follows:
+        - C = clear the screen
+           - alias c='clear'
+        - Update = update and install the newest versions of all packages currently installed on the Debian system
+          - alias update='apt-get update && apt-get upgrade'
+
+        - Ports - Lists all listening TCP/UDP ports with the PID of the associated process.
+          - alias ports='netstat -tulpn'
+        - Vi - Run vim text editor instead of old vi.
+          - alias vi='vim'
+  - Changing Bash Prompt
+    - See all bash Prompts
+  - Setting Shell Options
+    - All Current Shell Options
+  - Setting System wide shell Options
+    - By default /etc/profile file act as a system-wide profile file for the Bash shell.
+    - You can force setting using this file for all user. However, it is recommended that you use /etc/profile.d file under CentOS / Fedora / Redhat Enterprise Linux. For all other distribution edit /etc/profile file.
+    - Task: Setting up a JAVA_HOME and PATH settings for all user.
+      - Create /etc/profile.d/java.sh file, enter:
+        - Export JAVA_HOME=/opt/jdk1.5.0_12
+        - Export PATH=$PATH:$JAVA_HOME/bin
