@@ -183,7 +183,7 @@
   - Startup Scripts
     - Script Execution Order
       - /etc/profile - It contains Linux system wide environment and startup programs. This file runs first when a user logs in to the system. This file also act as a system-wide profile file for the bash shell.
-      - /etc/profile.d - /etc/profile calls /etc/profile.d/. It is a directory and all scripts in this directory are called by /etc/profile using a [for loop] (https://bash.cyberciti.biz/guide/For_loop). This file runs second when a user logs in.
+      - /etc/profile.d - /etc/profile calls /etc/profile.d/. It is a directory and all scripts in this directory are called by /etc/profile using a [for loop](https://bash.cyberciti.biz/guide/For_loop). This file runs second when a user logs in.
       - ~/.bash_profile or $HOME/.bash_profile - Finally, the file ~/.bash_profile is called in the users home directory ($HOME). This file runs third when a user logs in. This file calls ~/.bashrc in the users home directory.
 
         - Usage
@@ -196,8 +196,8 @@
             - Set default umask (file mode creation mask).
             - Override and remove unwanted settings such as variables or aliases (undo changes).
             - Set up environment.
-            - Set up aliases.
-            - Set up functions.
+            - Set up [aliases](https://bash.cyberciti.biz/guide/Using_aliases).
+            - Set up [functions](https://bash.cyberciti.biz/guide/Writing_your_first_shell_function).
 
            - Viewing dot (.) Files
              - Use the following commands in the $HOME directory
