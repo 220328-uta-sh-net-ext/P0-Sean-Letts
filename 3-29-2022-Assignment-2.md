@@ -220,9 +220,9 @@
         - Vi - Run vim text editor instead of old vi.
           - alias vi='vim'
   - Changing Bash Prompt
-    - See all bash Prompts
+    - See all [bash Prompts](https://bash.cyberciti.biz/guide/Changing_bash_prompt)
   - Setting Shell Options
-    - All Current Shell Options
+    - All Current [Shell Options](https://bash.cyberciti.biz/guide/Setting_shell_options)
   - Setting System wide shell Options
     - By default /etc/profile file act as a system-wide profile file for the Bash shell.
     - You can force setting using this file for all user. However, it is recommended that you use /etc/profile.d file under CentOS / Fedora / Redhat Enterprise Linux. For all other distribution edit /etc/profile file.
