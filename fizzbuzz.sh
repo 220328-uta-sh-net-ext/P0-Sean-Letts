@@ -18,8 +18,11 @@ do
                 echo "fizzbuzz"
             else
                 echo "buzz"
-            fi 
-        fi
+            fi
+        elif [ $(($number % 3)) -eq 0 ]
+        then
+            echo "fizz" 
+        fi  
     fi
     read -p "Would you like to exit? Enter 1 if yes: " exit_val
 done
