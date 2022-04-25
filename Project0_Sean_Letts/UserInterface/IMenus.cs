@@ -10,8 +10,5 @@ namespace UserInterface
     {
         public string MainMenu();
         public string MainUserChoice();
-        public User.UserDetails LoginMenu();
-        public User.UserDetails RegisterMenu();
-        public string ValidateInput(string detail, string input);
     }
 }

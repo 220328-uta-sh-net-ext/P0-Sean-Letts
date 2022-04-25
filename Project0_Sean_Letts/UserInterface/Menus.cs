@@ -90,35 +90,64 @@ namespace UserInterface
             return ValidateInput(detail, newInput);
         }
     }
-
-    public class ReviewMenus
+    public class DirectionalMenu : IMenus
     {
-        public string searchResturantMenu()
+        public string MainMenu()
         {
             Console.Clear();
-            Console.WriteLine("What would you like to search by?");
-            Console.WriteLine("Enter <3> to search by name");
-            Console.WriteLine("Enter <2> to search by rating");
-            Console.WriteLine("Enter <1> to search by zip code");
-            Console.WriteLine("Enter <0> to return to the previous menu.");
-            return searchResturantMenuChoice();
+            Console.WriteLine("Enter <2> to view all resturants");
+            Console.WriteLine("Enter <1> to return to the Login Menu");
+            Console.WriteLine("Enter <0> to exit the program");
+            return MainUserChoice();
         }
-        public string searchResturantMenuChoice()
+        public string MainUserChoice()
         {
             string input = Console.ReadLine();
             switch (input)
             {
                 case "0":
-                    return "Exit";
+                    return "FullExit";
                 case "1":
-                    return "Name";
+                    return "Exit";
                 case "2":
-                    return "Rating";
-                case "3":
-                    return "ZipCode";
+                    return "ViewAll";
                 default:
                     Console.WriteLine("Please input a valid response");
-                    return searchResturantMenuChoice();
+                    return MainUserChoice();
+            }
+        }
+    }
+    public class ReviewMenus : IMenus
+    {
+        public string MainMenu()
+        {
+            Console.Clear();
+            Console.WriteLine("What would you like to search by?");
+            Console.WriteLine("Enter <4> to search by name");
+            Console.WriteLine("Enter <3> to search by rating");
+            Console.WriteLine("Enter <2> to search by zip code");
+            Console.WriteLine("Enter <1> to return to the previous menu.");
+            Console.WriteLine("Enter <0> to exit the program.");
+            return MainUserChoice();
+        }
+        public string MainUserChoice()
+        {
+            string input = Console.ReadLine();
+            switch (input)
+            {
+                case "0":
+                    return "FullExit";
+                case "1":
+                    return "Exit";
+                case "2":
+                    return "Zip Code";
+                case "3":
+                    return "Rating";
+                case "4":
+                    return "Name";
+                default:
+                    Console.WriteLine("Please input a valid response");
+                    return MainUserChoice();
             }
         }
 
