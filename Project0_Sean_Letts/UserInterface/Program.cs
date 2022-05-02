@@ -1,12 +1,14 @@
 ﻿using UserInterface;
 using User;
 using Resturant;
+using Resturant.Resturant;
 
 Menus menu = new Menus();
 string connectionStringFilePath = "C:/Users/Owner/Desktop/Revature/Sean-Letts/Project0_Sean_Letts/User/UserDatabase/SQLinfo.txt";
 string connectionString = File.ReadAllText(connectionStringFilePath);
 IUserLogic userinfo = new UserLogic(connectionString);
 ResturantLogic resLogic = new ResturantLogic(connectionString);
+ReviewLogic revLogic = new ReviewLogic(connectionString);
 
 bool repeat = true;
 while (repeat)
@@ -37,9 +39,13 @@ while (repeat)
             {
                 //if the data entered is wrong, return to menu screen
                 indrMenu = false;
+                Console.WriteLine("Your username or password is incorrect. Try again.");
+                Console.WriteLine("You could also be trying to log in as an admin when you are not.");
+                Console.WriteLine("Please press enter to go back to the login page.");
+                Console.ReadLine();
             }
             DirectionalMenu drMenu = new DirectionalMenu();
-            if(loginUser.IsAdmin = true && isRealUser)
+            if(loginUser.IsAdmin == true && isRealUser)
             {
                 bool inAdminMenu = true;
                 while (inAdminMenu)
@@ -63,8 +69,10 @@ while (repeat)
                             inAdminMenu=false;
                             break;
                         case "ShowAll":
+                            userinfo.showAllUsers();
                             break;
                         case "Search":
+                            userinfo.searchForUser();
                             break;
                         default:
                             Console.WriteLine("How the heck did you get here? Error.");
@@ -89,6 +97,9 @@ while (repeat)
                         ResturantInfo newResturant = resLogic.getResturantInfo();
                         resLogic.addNewResturant(newResturant);
                         //Add a new resturant. Gonna need a lot of details.
+                        Console.WriteLine("You have added a new resturant to the database!");
+                        Console.WriteLine("Press enter to continue");
+                        Console.ReadLine();
                         break;
                     case "ViewAll":
                         var resturants = resLogic.GetAllResturants();
@@ -128,14 +139,22 @@ while (repeat)
                             }
                         }
                         break;
+                    case "LookReview":
+                        revLogic.LookAtAllReviews();
+                        break;
+                    case "AddReview":
+                        revLogic.AddNewReview();
+                        break;
                     default:
                         Console.WriteLine("How did you get here? Error");
+                        Console.ReadLine();
                         break;
                 }
             }
             break;
         default:
             Console.WriteLine("How did you get here?");
+            Console.ReadLine();
             break;
     }
 

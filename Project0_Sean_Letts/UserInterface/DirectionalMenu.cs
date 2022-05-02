@@ -12,6 +12,8 @@ namespace UserInterface
         {
             Console.Clear();
             Console.WriteLine("What would you like to do?");
+            Console.WriteLine("Enter <6> to write a review");
+            Console.WriteLine("Enter <5> to look at reviews");
             Console.WriteLine("Enter <4> to add a new resturants");
             Console.WriteLine("Enter <3> to view all resturants");
             Console.WriteLine("Enter <2> to search for a resturant");
@@ -34,6 +36,10 @@ namespace UserInterface
                     return "ViewAll";
                 case "4":
                     return "AddNew";
+                case "5":
+                    return "LookReview";
+                case "6":
+                    return "AddReview";
                 default:
                     Console.WriteLine("Please input a valid response");
                     return MainUserChoice();

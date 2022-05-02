@@ -71,5 +71,32 @@ namespace User
             return usersd;
         }
 
+        public void showAllUsers()
+        {
+            var users = GetAllUsers();
+            foreach (UserInfo user in users)
+            {
+                Console.WriteLine(user);
+            }
+            Console.WriteLine("All users displayed.");
+            Console.WriteLine("Please press enter to continue.");
+            Console.ReadLine();
+        }
+
+        public void searchForUser()
+        {
+            Console.WriteLine("Please enter the username you are looking for.");
+            string answer = Console.ReadLine();
+            var allUsers = GetAllUsers();
+            var filteredUsernames = allUsers.Where(r => r.UserName.Contains(answer)).ToList();
+            foreach (UserInfo user in filteredUsernames)
+            {
+                Console.WriteLine(user);
+            }
+            Console.WriteLine("All users with matching username displayed.");
+            Console.WriteLine("Please press enter to continue.");
+            Console.ReadLine();
+        }
+
     }
 }
