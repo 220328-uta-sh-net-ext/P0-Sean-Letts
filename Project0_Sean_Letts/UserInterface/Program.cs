@@ -1,5 +1,12 @@
 ﻿using UserInterface;
+using User;
+using Resturant;
+
 Menus menu = new Menus();
+string connectionStringFilePath = "C:/Users/Owner/Desktop/Revature/Sean-Letts/Project0_Sean_Letts/User/UserDatabase/SQLinfo.txt";
+string connectionString = File.ReadAllText(connectionStringFilePath);
+IUserLogic userinfo = new UserLogic(connectionString);
+ResturantLogic resLogic = new ResturantLogic(connectionString);
 
 bool repeat = true;
 while (repeat)
@@ -11,20 +18,20 @@ while (repeat)
             repeat = false;
             break;
         case "Register": //brings user to register screen
-            User.UserDetails newUser = menu.RegisterMenu();
-            newUser.addNewUser(newUser);
+            UserInfo newUser = menu.RegisterMenu();
+            userinfo.addNewUser(newUser);
             //add new user to the json file
             //returns user to main menu after registering them
             break;
         case "NormalLogin":
         case "AdminLogin":
             //brings user to login menu
-            User.UserDetails loginUser = menu.LoginMenu();
+            UserInfo loginUser = menu.LoginMenu();
             if(input == "AdminLogin")
             {
                 loginUser.IsAdmin = true;
             }
-            bool isRealUser = loginUser.validateUser(loginUser);
+            bool isRealUser = userinfo.validateUser(loginUser);
             bool indrMenu = true;
             if (!isRealUser)
             {
@@ -32,6 +39,40 @@ while (repeat)
                 indrMenu = false;
             }
             DirectionalMenu drMenu = new DirectionalMenu();
+            if(loginUser.IsAdmin = true && isRealUser)
+            {
+                bool inAdminMenu = true;
+                while (inAdminMenu)
+                {
+                    //Admin Menu
+                    Console.WriteLine("Welcome to the admin menu.");
+                    AdminMenu adMenu = new AdminMenu();
+                    string adInput = adMenu.MainMenu();
+                    switch (adInput)
+                    {
+                        case "FullExit":
+                            inAdminMenu = false;
+                            indrMenu = false;
+                            repeat = false;
+                            break;
+                        case "Exit":
+                            inAdminMenu = false;
+                            indrMenu = false;
+                            break;
+                        case "NormalMenu":
+                            inAdminMenu=false;
+                            break;
+                        case "ShowAll":
+                            break;
+                        case "Search":
+                            break;
+                        default:
+                            Console.WriteLine("How the heck did you get here? Error.");
+                            Console.ReadLine();
+                            break;
+                    }
+                }
+            }
             while (indrMenu)
             {
                 string drInput = drMenu.MainMenu();
@@ -44,11 +85,23 @@ while (repeat)
                     case "Exit":
                         indrMenu = false;
                         break;
+                    case "AddNew":
+                        ResturantInfo newResturant = resLogic.getResturantInfo();
+                        resLogic.addNewResturant(newResturant);
+                        //Add a new resturant. Gonna need a lot of details.
+                        break;
                     case "ViewAll":
+                        var resturants = resLogic.GetAllResturants();
+                        foreach (var resturant in resturants)
+                            Console.WriteLine(resturant); 
+                        Console.WriteLine("Press enter to exit");
+                        Console.ReadLine();
+                        break;
+                    case "Search":
                         bool inReview = true;
                         while (inReview)
                         {
-                            ReviewMenus reviewMenu = new ReviewMenus();
+                            SearchMenu reviewMenu = new SearchMenu();
                             string reviewInput = reviewMenu.MainMenu();
                             switch (reviewInput)
                             {
@@ -61,11 +114,13 @@ while (repeat)
                                     inReview = false;
                                     break;
                                 case "Name":
-                                case "Rating":
+                                    resLogic.searchByName();
+                                    break;
+                                case "Address":
+                                    resLogic.searchByAddress();
+                                    break;
                                 case "Zip Code":
-                                    Console.WriteLine($"Pleast enter the {reviewInput} you'd like to search by.");
-                                    string searchBy = Console.ReadLine();
-                                    //Todo, logic for searching
+                                    resLogic.searchByZipCode();
                                     break;
                                 default:
                                     Console.WriteLine("How did you get here? Error x2");

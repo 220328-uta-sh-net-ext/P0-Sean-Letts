@@ -37,7 +37,7 @@ namespace UserInterface
                     return MainUserChoice();
             }
         }
-        public User.UserDetails LoginMenu()
+        public User.UserInfo LoginMenu()
         {
             Console.Clear();
             Console.Write("Please Enter your username: ");
@@ -46,12 +46,12 @@ namespace UserInterface
             Console.Write("Please Enter your password: ");
             string password = Console.ReadLine();
             Console.WriteLine();
-            User.UserDetails newUser = new User.UserDetails();
+            User.UserInfo newUser = new User.UserInfo();
             newUser.UserName = username; 
             newUser.Password = password;
             return newUser;
         }
-        public User.UserDetails RegisterMenu()
+        public User.UserInfo RegisterMenu()
         {
             Console.Write("Please Enter your username: ");
             string username = Console.ReadLine();
@@ -60,7 +60,7 @@ namespace UserInterface
             string password = Console.ReadLine();
             password = ValidateInput("password", password);
             //need to add user to the json file
-            User.UserDetails newUser = new User.UserDetails();
+            User.UserInfo newUser = new User.UserInfo();
             newUser.UserName = username;
             newUser.Password = password;
             newUser.IsAdmin = false;
@@ -90,14 +90,16 @@ namespace UserInterface
             return ValidateInput(detail, newInput);
         }
     }
-    public class DirectionalMenu : IMenus
+    public class AdminMenu : IMenus
     {
         public string MainMenu()
         {
             Console.Clear();
-            Console.WriteLine("Enter <2> to view all resturants");
-            Console.WriteLine("Enter <1> to return to the Login Menu");
-            Console.WriteLine("Enter <0> to exit the program");
+            Console.WriteLine("Enter <4> to search for a user");
+            Console.WriteLine("Enter <3> to display all users");
+            Console.WriteLine("Enter <2> to proceed to the default menu");
+            Console.WriteLine("Enter <1> to return to the login page.");
+            Console.WriteLine("Enter <0> to exit the program.");
             return MainUserChoice();
         }
         public string MainUserChoice()
@@ -110,21 +112,25 @@ namespace UserInterface
                 case "1":
                     return "Exit";
                 case "2":
-                    return "ViewAll";
+                    return "NormalMenu";
+                case "3":
+                    return "ShowAll";
+                case "4":
+                    return "Search";
                 default:
                     Console.WriteLine("Please input a valid response");
                     return MainUserChoice();
             }
         }
     }
-    public class ReviewMenus : IMenus
+    public class SearchMenu : IMenus
     {
         public string MainMenu()
         {
             Console.Clear();
             Console.WriteLine("What would you like to search by?");
             Console.WriteLine("Enter <4> to search by name");
-            Console.WriteLine("Enter <3> to search by rating");
+            Console.WriteLine("Enter <3> to search by address");
             Console.WriteLine("Enter <2> to search by zip code");
             Console.WriteLine("Enter <1> to return to the previous menu.");
             Console.WriteLine("Enter <0> to exit the program.");
@@ -142,7 +148,7 @@ namespace UserInterface
                 case "2":
                     return "Zip Code";
                 case "3":
-                    return "Rating";
+                    return "Address";
                 case "4":
                     return "Name";
                 default:
@@ -152,4 +158,5 @@ namespace UserInterface
         }
 
     }
+
 }

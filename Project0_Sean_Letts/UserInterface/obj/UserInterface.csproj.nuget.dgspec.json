@@ -43,6 +43,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.1.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -154,7 +160,11 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\Owner\\Desktop\\Revature\\Sean-Letts\\Project0_Sean_Letts\\Resturant\\Resturant.csproj": {
+                "projectPath": "C:\\Users\\Owner\\Desktop\\Revature\\Sean-Letts\\Project0_Sean_Letts\\Resturant\\Resturant.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -166,6 +176,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.1.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
