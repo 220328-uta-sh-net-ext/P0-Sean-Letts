@@ -18,6 +18,10 @@ namespace Resturant
         {
             this.connectionString = connectionString;
         }
+        /// <summary>
+        /// Gathers all of the resturant information from the user, storing it in a new object.
+        /// </summary>
+        /// <returns>new resturant to be added to the db</returns>
         public ResturantInfo getResturantInfo()
         {
             bool inloop = true;
@@ -90,6 +94,10 @@ namespace Resturant
             }
             return newResturant;
         }
+        /// <summary>
+        /// Add a new resturant to the db
+        /// </summary>
+        /// <param name="newResturant"></param>
         public void addNewResturant(ResturantInfo newResturant)
         {
             var allResturants = GetAllResturants();
@@ -109,6 +117,10 @@ namespace Resturant
             command.ExecuteNonQuery();
             connection.Close();
         }
+        /// <summary>
+        /// Get all of the resturants in the DB
+        /// </summary>
+        /// <returns>List of all resturants</returns>
         public List<ResturantInfo> GetAllResturants()
         {
             string commandString = "SELECT * FROM Resturants;";
@@ -160,7 +172,9 @@ namespace Resturant
             }
             return resturants;
         }
-
+        /// <summary>
+        /// Search and display any resturants with the Name you enter
+        /// </summary>
         public void searchByName()
         {
             Console.Write("Please enter the name ");
@@ -174,6 +188,9 @@ namespace Resturant
             Console.WriteLine("All the results are displayed. Hit enter to exit.");
             Console.ReadLine();
         }
+        /// <summary>
+        /// Search and display any resturants with the address you enter
+        /// </summary>
         public void searchByAddress()
         {
             Console.Write("Please enter the Address ");
@@ -187,6 +204,9 @@ namespace Resturant
             Console.WriteLine("All the results are displayed. Hit enter to return to menu.");
             Console.ReadLine();
         }
+        /// <summary>
+        /// Search and display any resturants with the zipcode you enter
+        /// </summary>
         public void searchByZipCode()
         {
             Console.Write("Please enter the Zip Code");

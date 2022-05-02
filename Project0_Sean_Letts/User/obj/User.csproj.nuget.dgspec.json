@@ -115,6 +115,10 @@
             "Microsoft.Data.SqlClient": {
               "target": "Package",
               "version": "[4.1.0, )"
+            },
+            "xunit.extensibility.core": {
+              "target": "Package",
+              "version": "[2.4.1, )"
             }
           },
           "imports": [

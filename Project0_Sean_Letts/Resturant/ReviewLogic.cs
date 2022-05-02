@@ -24,6 +24,10 @@ namespace Resturant
             {
                 this.connectionString = connectionString;
             }
+            /// <summary>
+            /// Gather and return a list of all reviews.
+            /// </summary>
+            /// <returns>List of all Reviews</returns>
             public List<ReviewsInfo> GetAllReviews()
             {
                 string commandString = "SELECT * FROM reviews;";
@@ -50,7 +54,9 @@ namespace Resturant
                 }
                 return reviews;
             }
-
+            /// <summary>
+            /// Displays all reviews w/ assigned resturants.
+            /// </summary>
             public void LookAtAllReviews()
             {
                 ResturantLogic tempLogic = new ResturantLogic(connectionString);
@@ -66,11 +72,13 @@ namespace Resturant
                 Console.WriteLine("Select Enter to continue.");
                 Console.ReadLine();
             }
+            /// <summary>
+            /// Add a new review to the database
+            /// </summary>
             public void AddNewReview()
             {
                 ResturantLogic tempLogic = new ResturantLogic(connectionString);
                 var resturants = tempLogic.GetAllResturants();
-                var reviews = GetAllReviews();
                 bool inloop = true;
                 while (inloop)
                 {

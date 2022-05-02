@@ -10,7 +10,10 @@ namespace User
     {
         private const string filepath = "C:/Users/Owner/Desktop/Revature/Sean-Letts/Project0_Sean_Letts/User/UserDatabase/";
         private readonly string connectionString;
-
+        /// <summary>
+        /// sets up connection to the DB
+        /// </summary>
+        /// <param name="connectionString"></param>
         public UserLogic(string connectionString)
         {
             this.connectionString = connectionString;
@@ -32,7 +35,11 @@ namespace User
             command.ExecuteNonQuery();
             connection.Close();
         }
-
+        /// <summary>
+        /// Validates user logging in
+        /// </summary>
+        /// <param name="loginUser"></param>
+        /// <returns>true if the user can log in</returns>
         public bool validateUser(UserInfo loginUser)
         {
             var allUsers = GetAllUsers();
@@ -43,7 +50,10 @@ namespace User
                 return true;
             return false;
         }
-
+        /// <summary>
+        /// function used to get all of the users
+        /// </summary>
+        /// <returns>Returns a list of all users in userinfo</returns>
         public List<UserInfo> GetAllUsers()
         {
             string commandString = "SELECT * FROM Users;";
@@ -70,7 +80,9 @@ namespace User
             }
             return usersd;
         }
-
+        /// <summary>
+        /// Displays all user details
+        /// </summary>
         public void showAllUsers()
         {
             var users = GetAllUsers();
@@ -82,7 +94,10 @@ namespace User
             Console.WriteLine("Please press enter to continue.");
             Console.ReadLine();
         }
-
+        /// <summary>
+        /// searches for a user
+        /// displays that user's details
+        /// </summary>
         public void searchForUser()
         {
             Console.WriteLine("Please enter the username you are looking for.");

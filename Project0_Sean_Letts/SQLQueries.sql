@@ -3,7 +3,7 @@ drop table reviews;
 
 create table resturants (
     ID int not null PRIMARY KEY IDENTITY(1,1) CHECK (ID > 0),
-    Name NVARCHAR(255) NOT NULL UNIQUE,
+    Name NVARCHAR(255) NOT NULL,
     Address nvarchar(255) NOT NULL,
     City nvarchar(255),
     State nvarchar(255),

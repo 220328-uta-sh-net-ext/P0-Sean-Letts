@@ -24,9 +24,14 @@ namespace User
         /// </summary>
         /// <returns></returns>
         public List<UserInfo> GetAllUsers();
-
+        /// <summary>
+        /// Displays all user details
+        /// </summary>
         public void showAllUsers();
-
+        /// <summary>
+        /// searches for a user
+        /// displays that user's details
+        /// </summary>
         public void searchForUser();
     }
 }
