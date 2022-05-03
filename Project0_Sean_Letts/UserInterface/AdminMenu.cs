@@ -11,6 +11,7 @@ namespace UserInterface
         public string MainMenu()
         {
             Console.Clear();
+            Console.WriteLine("Admin Menu");
             Console.WriteLine("Enter <4> to search for a user");
             Console.WriteLine("Enter <3> to display all users");
             Console.WriteLine("Enter <2> to proceed to the default menu");
