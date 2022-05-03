@@ -9,9 +9,6 @@ namespace ResturantTest
 {
     public class UserTest
     {
-        /// <summary>
-        /// Checks that users can store data properly
-        /// </summary>
         [Fact]
         public void UserInfoTests()
         {
