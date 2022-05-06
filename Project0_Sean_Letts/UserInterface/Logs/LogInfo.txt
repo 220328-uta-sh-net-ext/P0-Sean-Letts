@@ -124,3 +124,12 @@
 2022-05-03 08:26:24.766 -07:00 [INF] Displaying Directional Menu to the user
 2022-05-03 08:26:28.159 -07:00 [INF] Displaying All Reviws to the user
 2022-05-03 08:26:33.810 -07:00 [INF] Displaying Directional Menu to the user
+2022-05-05 14:22:05.327 -07:00 [INF] Displaying Main Menu to the user
+2022-05-05 14:22:10.263 -07:00 [INF] Displaying Login Menu to the user
+2022-05-05 14:22:11.925 -07:00 [INF] Validates user
+2022-05-05 14:22:14.127 -07:00 [INF] Displaying Admin Menu to the user
+2022-05-05 14:22:14.967 -07:00 [INF] Displaying all users to the admin user
+2022-05-05 14:22:18.064 -07:00 [INF] Displaying Admin Menu to the user
+2022-05-05 14:22:20.278 -07:00 [INF] Displaying Directional Menu to the user
+2022-05-05 14:22:21.177 -07:00 [INF] Displaying All Resturants to the user
+2022-05-05 14:22:22.924 -07:00 [INF] Displaying Directional Menu to the user
