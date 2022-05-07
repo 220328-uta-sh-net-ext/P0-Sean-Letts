@@ -35,9 +35,9 @@
 - Also has many extension [methods](https://www.tutorialsteacher.com/linq/linq-api).
 ## LINQ Query Syntax
 - LINQ Query Syntax written as:
-	- 1. from <range variable> in <IEnumerable<T> or IQueryable<T> Collection>
-	- 2. <Standard Query Operators> <lambda expression>
-	- 3. <select or groupBy operator> <result formation>
+	- 1. from range_variable in <IEnumerable<T> or IQueryable<T> Collection>
+	- 2. <Standard Query Operators> lambda expression
+	- 3. select or groupBy operator result formation
 - Line 1 sets up the query to look through every object in the collection, similar to a foreach loop
 - Line 2 dictates what condition is used to deteremine what you are looking for using [lambda expressions](https://www.tutorialsteacher.com/linq/linq-lambda-expression)
 	- Can also filter, join, group, sort, or do more to create desired result 
