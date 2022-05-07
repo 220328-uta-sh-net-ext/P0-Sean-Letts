@@ -1,5 +1,5 @@
-﻿#LINQ - Sean Letts Notes
-##What is LINQ
+﻿# LINQ - Sean Letts Notes
+## What is LINQ
 - LINQ = Language-Integrated Query
 - Integrated in C# & VB.NET to Query Data Sources
 - Used to Query:
@@ -10,7 +10,7 @@
 	- MS SQL Server
 	- Other Databases
 - LINQ returns queries as objects
-##Why LINQ
+## Why LINQ
 - Allows for looking through data sources with much more compact and readable
 - The building blocks of LINQ are:
 	- the extension method
@@ -26,14 +26,14 @@
 	- Standardizes querying data
 	- Provides type checking at query time
 	- Can retrieve data in different forms
-##LINQ API
+## LINQ API
 - Any class that impliments IEnumerable<T> or IQueryable<T> interfaces can be queried 
 - LINQ api includes two main static class: Enumerable and Queryable.
 - Enumerable class includes extension methods for in memory collection like: List, Dictionary, Hashset, Queue, etc.
 - There are a lot of extension methods from the [Enumerable class](https://www.tutorialsteacher.com/linq/linq-api)
 - Queryable class includes extension methods for remote queries like: LINQ to SQL, Amazon, or LDAP, PLINQ, and EntityFramework
 - Also has many extension [methods](https://www.tutorialsteacher.com/linq/linq-api).
-##LINQ Query Syntax
+## LINQ Query Syntax
 - LINQ Query Syntax written as:
 	- 1. from <range variable> in <IEnumerable<T> or IQueryable<T> Collection>
 	- 2. <Standard Query Operators> <lambda expression>
@@ -42,20 +42,20 @@
 - Line 2 dictates what condition is used to deteremine what you are looking for using [lambda expressions](https://www.tutorialsteacher.com/linq/linq-lambda-expression)
 	- Can also filter, join, group, sort, or do more to create desired result 
 - Line 3 is the select line, which all LINQ Queries end with if they do not end with a group clause. This is used to shape the data.
-##LINQ Method Syntax
+## LINQ Method Syntax
 - Method Syntax uses extension methods from the Enumerable or Queryable static classes
 - The complier converts query syntax into method syntax at compile time
 - in this example: var result = stringList.Where(s => s.Contains("Tutorials"));
 	- .Where is the extension method
 	- (s => s.Contains("Tutorials") is the lambda expression
 - Implicty typed variable can hold the result of the LINQ Query
-##Lambda Expression
+## Lambda Expression
 - Lambda Expression is a shorter way of representing the anonymous method
 	- replaces the delegate and parameter type with a '=>'
 	- doesn't need {}, return or a semicolon depending on if there is more than 1 return value
 	- doesn't need () if there is only 1 parameter
 - VB.Net doesn't support '=>'
-##Standard Query Operators
+## Standard Query Operators
 - Extension methods for IEnumerable<T> and IQueryable<T>
 - Provide different functionalities like filtering, sorting, grouping, aggregation, concatenation, etc.
 	- Where
