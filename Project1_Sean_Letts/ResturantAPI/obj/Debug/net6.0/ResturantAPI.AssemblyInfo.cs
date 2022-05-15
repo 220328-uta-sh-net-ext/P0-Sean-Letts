@@ -11,7 +11,7 @@
 using System;
 using System.Reflection;
 
-[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("4098e91e-b9f9-4578-8b54-e25b79e2f959")]
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("4ebc0dca-44fd-4daa-b3ce-69c5a53b5556")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("ResturantAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]

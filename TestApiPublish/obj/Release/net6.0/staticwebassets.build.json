@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "LGknmaAVD6nXiQtpeDP92YH+l6x4HyrV9RQjxiGDYw8=",
+  "Source": "TestApiPublish",
+  "BasePath": "_content/TestApiPublish",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

@@ -1,3 +1,10 @@
+using Resturant;
+using Resturant.Resturant;
+using User;
+
+string connectionStringFilePath = "C:/Users/Owner/Desktop/Revature/Sean-Letts/Project1_Sean_Letts/User/UserDatabase/SQLinfo.txt";
+string connectionString = File.ReadAllText(connectionStringFilePath);
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,8 +14,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var app = builder.Build();
+builder.Services.AddScoped<UserLogic>(userLogic => new UserLogic(connectionString));
+builder.Services.AddScoped<ResturantLogic>(resLogic => new ResturantLogic(connectionString));
+//builder.Services.AddScoped<IUserLogic>(ulogic => new UserLogic(connectionString));
+//builder.Services.AddScoped<ResturantLogic>(reslogic => new ResturantLogic(connectionString));
+//builder.Services.AddScoped<ReviewLogic>(revlogic => new ReviewLogic(connectionString));
 
+var app = builder.Build();
+app.Logger.LogInformation("App Started");
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

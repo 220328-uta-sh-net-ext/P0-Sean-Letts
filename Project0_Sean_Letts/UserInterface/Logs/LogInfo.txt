@@ -133,3 +133,16 @@
 2022-05-05 14:22:20.278 -07:00 [INF] Displaying Directional Menu to the user
 2022-05-05 14:22:21.177 -07:00 [INF] Displaying All Resturants to the user
 2022-05-05 14:22:22.924 -07:00 [INF] Displaying Directional Menu to the user
+2022-05-11 12:06:33.728 -07:00 [INF] Displaying Main Menu to the user
+2022-05-11 12:06:35.904 -07:00 [INF] Displaying Login Menu to the user
+2022-05-11 12:06:38.066 -07:00 [INF] Validates user
+2022-05-11 12:06:39.978 -07:00 [INF] Incorrect details added for login.
+2022-05-11 12:06:41.696 -07:00 [INF] Displaying Main Menu to the user
+2022-05-11 12:06:45.037 -07:00 [INF] Displaying Login Menu to the user
+2022-05-11 12:06:45.127 -07:00 [INF] Validates user
+2022-05-11 12:07:19.326 -07:00 [INF] Displaying Main Menu to the user
+2022-05-11 12:07:22.635 -07:00 [INF] Displaying Login Menu to the user
+2022-05-11 12:07:23.780 -07:00 [INF] Validates user
+2022-05-11 12:09:17.816 -07:00 [INF] Displaying Main Menu to the user
+2022-05-11 12:09:21.440 -07:00 [INF] Displaying Login Menu to the user
+2022-05-11 12:09:22.598 -07:00 [INF] Validates user
