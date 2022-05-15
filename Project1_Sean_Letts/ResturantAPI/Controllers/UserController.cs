@@ -8,9 +8,6 @@ namespace ResturantAPI.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private const string filepath = "C:/Users/Owner/Desktop/Revature/Sean-Letts/Project0_Sean_Letts/User/UserDatabase/";
-        private readonly string connectionString;
-
         private IUserLogic userLogic;
 
         public UserController(IUserLogic userLogic)
@@ -55,39 +52,5 @@ namespace ResturantAPI.Controllers
             userLogic.addNewUser(user);
             return CreatedAtAction("Get", user);
         }
-        /*
-        [HttpPut]
-        [ProducesResponseType(201)]
-        [ProducesResponseType(400)]
-        [ProducesResponseType(404)]
-        public ActionResult Put([FromBody] UserInfo user, string username)
-        {
-            if (username == null)
-                return BadRequest("Cannot modify without username");
-            var answer = users.Find(x => x.UserName.Contains(username)); 
-            if (answer == null)
-                return NotFound("Username not found");
-            answer.UserName = user.UserName;
-            answer.Password = user.Password;
-            answer.IsAdmin = user.IsAdmin;
-            return Created("Get", user);
-        }
-        */
-        /*
-        [ProducesResponseType(201)]
-        [ProducesResponseType(400)]
-        [ProducesResponseType(404)]
-        [HttpDelete]
-        public ActionResult Delete(string username)
-        {
-            if (username == null)
-                return BadRequest("Cannot modify without username");
-            var answer = users.Find(x => x.UserName.Contains(username));
-            if (answer == null)
-                return NotFound("Username not found");
-            users.Remove(answer);
-            return Ok($"Deleted User: {username}");
-        }
-        */
     }
 }

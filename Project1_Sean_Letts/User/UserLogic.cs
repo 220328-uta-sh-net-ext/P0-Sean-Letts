@@ -131,6 +131,5 @@ namespace User
             Console.WriteLine("Please press enter to continue.");
             Console.ReadLine();
         }
-
     }
 }
