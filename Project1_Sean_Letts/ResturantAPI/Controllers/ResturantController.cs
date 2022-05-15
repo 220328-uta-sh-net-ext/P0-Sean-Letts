@@ -24,5 +24,58 @@ namespace ResturantAPI.Controllers
         {
             return resLogic.GetAllResturants();
         }
+
+        [HttpGet("Name")]
+        [ProducesResponseType(200, Type = typeof(ResturantInfo))]
+        [ProducesResponseType(404)]
+        public ActionResult<ResturantInfo> GetN(string name)
+        {
+            var allUsers = resLogic.GetAllResturants();
+            var answer = allUsers.Find(r => r.name.Contains(name));
+            if (answer == null)
+            {
+                return NotFound($"Resturant named {name} not found in DB");
+            }
+            return Ok(answer);
+        }
+
+        [HttpGet("Address")]
+        [ProducesResponseType(200, Type = typeof(ResturantInfo))]
+        [ProducesResponseType(404)]
+        public ActionResult<ResturantInfo> GetA(string address)
+        {
+            var allUsers = resLogic.GetAllResturants();
+            var answer = allUsers.Find(r => r.address.Contains(address));
+            if (answer == null)
+            {
+                return NotFound($"Address {address} not found in DB");
+            }
+            return Ok(answer);
+        }
+
+        [HttpGet("Zipcode")]
+        [ProducesResponseType(200, Type = typeof(ResturantInfo))]
+        [ProducesResponseType(404)]
+        public ActionResult<ResturantInfo> GetZ(int zipcode)
+        {
+            var allUsers = resLogic.GetAllResturants();
+            var answer = allUsers.Find(r => r.zipcode.Equals(zipcode));
+            if (answer == null)
+            {
+                return NotFound($"Zipcode {zipcode} not found in DB");
+            }
+            return Ok(answer);
+        }
+
+        [HttpPost]
+        [ProducesResponseType(201)]
+        [ProducesResponseType(400)]
+        public ActionResult Post([FromBody] ResturantInfo res)
+        {
+            if (res == null)
+                return BadRequest("Invalid Resturant. Please try again with valid values");
+            resLogic.addNewResturant(res);
+            return CreatedAtAction("Get", res);
+        }
     }
 }
