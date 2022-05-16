@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.Extensions.Caching.Memory;
 using User;
 
 namespace ResturantAPI.Controllers
@@ -9,10 +11,12 @@ namespace ResturantAPI.Controllers
     public class UserController : ControllerBase
     {
         private IUserLogic userLogic;
+        //private IMemoryCache memoryCache;
 
         public UserController(UserLogic userLogic)
         {
             this.userLogic = userLogic;
+            //this.memoryCache = memoryCache;
         }
 
         private static List<UserInfo> users = new List<UserInfo>
@@ -26,9 +30,15 @@ namespace ResturantAPI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public ActionResult<List<UserInfo>> Get()
         {
-            users = userLogic.GetAllUsers();
+            try
+            {
+                users = userLogic.GetAllUsers();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
             return Ok(users);
-            //return Ok(users);
         }
         [HttpGet("name")]
         [ProducesResponseType(200, Type = typeof(UserInfo))]
@@ -45,14 +55,46 @@ namespace ResturantAPI.Controllers
         }
         
         [HttpPost]
+        [Route("Add New User")]
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
-        public ActionResult Post([FromBody] UserInfo user)
+        public ActionResult AddNewUser([FromQuery] UserInfo user)
         {
             if (user == null)
                 return BadRequest("Invalid User. Please try again with valid values");
             userLogic.addNewUser(user);
             return CreatedAtAction("Get", user);
         }
+
+        [HttpPost]
+        [Route("Login")]
+        [ProducesResponseType(201)]
+        [ProducesResponseType(400)]
+        public ActionResult Login([FromQuery] UserInfo user)
+        {
+            //TODO Fix
+            if (user == null)
+                return BadRequest("Invalid User. Please try again with valid values");
+            users = userLogic.GetAllUsers();
+            if (users.Contains(user))
+                return Ok(user);
+            return BadRequest("Wrong Credentials.");
+        }
+        /*
+        [HttpPost]
+        public ActionResult Login([FromQuery] string UserName, [FromQuery] string Password)
+        {
+            UserInfo user = new UserInfo();
+            user.UserName = UserName;
+            user.Password = Password;
+            if (user.UserName == "Admin")
+                user.IsAdmin = true;
+            else
+                user.IsAdmin = false;
+            users = userLogic.GetAllUsers();
+            if (users.Contains(user))
+                return Ok(user);
+            return BadRequest("Wrong Credentials.");
+        }*/
     }
 }

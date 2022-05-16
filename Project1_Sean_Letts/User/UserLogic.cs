@@ -80,10 +80,11 @@ namespace User
             }
             catch (Exception ex)
             {
-                Console.WriteLine("GetAllUsers has a connection issue. Please debug.");
-                Console.WriteLine("Error is: " + ex.Message);
-                Console.WriteLine("Please hit enter to continue.");
-                Console.ReadLine();
+                throw;
+                //Console.WriteLine("GetAllUsers has a connection issue. Please debug.");
+                //Console.WriteLine("Error is: " + ex.Message);
+                //Console.WriteLine("Please hit enter to continue.");
+                //Console.ReadLine();
             }
             var usersd = new List<UserInfo>();
             
