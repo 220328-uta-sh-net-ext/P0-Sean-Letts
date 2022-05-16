@@ -38,7 +38,7 @@ namespace ResturantAPI.Controllers
         }
 
         [HttpGet]
-        [Route("Async Get All")]
+        [Route("Async Get All Users")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<List<UserInfo>>> GetAsync()
         {

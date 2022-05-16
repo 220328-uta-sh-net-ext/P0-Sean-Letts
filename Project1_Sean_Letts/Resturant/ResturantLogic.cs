@@ -229,5 +229,63 @@ namespace Resturant
             Console.ReadLine();
         }
 
+        public async Task<List<ResturantInfo>> GetAllResturantsAsync()
+        {
+            string commandString = "SELECT * FROM Resturants;";
+
+            using SqlConnection connection = new(connectionString);
+            using SqlCommand command = new(commandString, connection);
+            IDataAdapter adapter = new SqlDataAdapter(command);
+            DataSet dataSet = new();
+            try
+            {
+                await connection.OpenAsync();
+                adapter.Fill(dataSet); // this sends the query. DataAdapter uses a DataReader to read.
+                await connection.CloseAsync();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+            var resturants = new List<ResturantInfo>();
+
+            DataColumn levelColumn = dataSet.Tables[0].Columns[2];
+
+            ReviewLogic RVL = new ReviewLogic(connectionString);
+            var reviews = RVL.GetAllReviews();
+            int count = 0;
+
+            foreach (DataRow row in dataSet.Tables[0].Rows)
+            {
+                decimal rating = 0.0m;
+                int numOfReviews = 0;
+                count++;
+                foreach (ReviewsInfo review in reviews)
+                {
+                    if (count == review.ResturantId)
+                    {
+                        rating += review.rating;
+                        numOfReviews++;
+                    }
+                }
+                if (numOfReviews != 0)
+                    rating = (rating / (decimal)numOfReviews);
+
+                resturants.Add(new ResturantInfo
+                {
+                    name = (string)row["Name"],
+                    address = (string)row["Address"],
+                    city = (string)row["City"],
+                    state = (string)row["state"],
+                    zipcode = (int)row["zipcode"],
+                    country = (string)row["country"],
+                    rating = rating,
+                    numOfReviews = numOfReviews
+                });
+
+            }
+            return resturants;
+        }
     }
 }

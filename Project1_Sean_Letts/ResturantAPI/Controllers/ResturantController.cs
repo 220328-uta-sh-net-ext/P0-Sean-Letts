@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Caching.Memory;
 using Resturant;
 
 namespace ResturantAPI.Controllers
@@ -12,17 +14,53 @@ namespace ResturantAPI.Controllers
         private readonly string connectionString;
 
         private ResturantLogic resLogic;
+        private IMemoryCache memoryCache;
 
-        public ResturantController(ResturantLogic resLogic)
+        private static List<ResturantInfo> rests = new List<ResturantInfo>();
+
+        public ResturantController(ResturantLogic resLogic, IMemoryCache memoryCache)
         {
             this.resLogic = resLogic;
+            this.memoryCache = memoryCache;
         }
 
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public ActionResult<List<ResturantInfo>> Get()
         {
-            return resLogic.GetAllResturants();
+            try
+            {
+                rests = resLogic.GetAllResturants();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            return Ok(rests);
+        }
+
+        [HttpGet]
+        [Route("Async Get All Resturants")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult<List<ResturantInfo>>> GetAsync()
+        {
+            try
+            {
+                if (!memoryCache.TryGetValue("users", out rests))
+                {
+                    rests = await resLogic.GetAllResturantsAsync();
+                    memoryCache.Set("users", rests, new TimeSpan(0, 1, 0));
+                }
+            }
+            catch (SqlException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            return Ok(rests);
         }
 
         [HttpGet("Name")]
