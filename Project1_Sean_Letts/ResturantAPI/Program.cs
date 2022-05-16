@@ -11,7 +11,7 @@ using System.Text;
 using User;
 //Users/Owner/Desktop/Revature/Sean-Letts/Project1_Sean_Letts/User/UserDatabase
 string connectionStringFilePath = "../User/UserDatabase/SQLinfo.txt";
-string connectionString = File.ReadAllText(connectionStringFilePath);
+//string connectionString = File.ReadAllText(connectionStringFilePath);
 
 Log.Logger = new LoggerConfiguration()
     .WriteTo.File("../UserInterface/Logs/APILogs.txt").MinimumLevel.Debug().MinimumLevel.Information()
@@ -43,6 +43,8 @@ builder.Services.AddAuthentication(option =>
     };
 });
 
+string connectionString = config.GetConnectionString("Database");
+
 builder.Services.AddMemoryCache();
 builder.Services.AddControllers(options => options.RespectBrowserAcceptHeader = true)
     .AddXmlSerializerFormatters();
@@ -69,7 +71,7 @@ builder.Services.AddScoped<IJWTManagerRepo, JWTManagerRepo>();
 var app = builder.Build();
 app.Logger.LogInformation("App Started");
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (app.Environment.IsProduction())
 {
     app.UseSwagger();
     app.UseSwaggerUI(options =>

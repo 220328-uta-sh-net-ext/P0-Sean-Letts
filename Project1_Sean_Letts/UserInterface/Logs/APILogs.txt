@@ -17,3 +17,7 @@
 2022-05-16 15:28:12.017 -07:00 [INF] Entered and exited get resturants with no troubles.
 2022-05-16 15:28:16.721 -07:00 [INF] Good request, get all reviews.
 2022-05-16 15:28:30.418 -07:00 [INF] Authorized user given token.
+2022-05-16 15:29:41.050 -07:00 [INF] Entered and exited get resturants with no troubles.
+2022-05-16 15:29:44.841 -07:00 [INF] Good request, get all reviews.
+2022-05-16 15:29:55.289 -07:00 [INF] Authorized user given token.
+2022-05-16 16:04:45.031 -07:00 [INF] Entered and exited get resturants with no troubles.
