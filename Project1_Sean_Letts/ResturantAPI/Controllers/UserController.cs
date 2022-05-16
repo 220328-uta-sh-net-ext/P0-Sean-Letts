@@ -10,7 +10,7 @@ namespace ResturantAPI.Controllers
     {
         private IUserLogic userLogic;
 
-        public UserController(IUserLogic userLogic)
+        public UserController(UserLogic userLogic)
         {
             this.userLogic = userLogic;
         }
@@ -21,11 +21,13 @@ namespace ResturantAPI.Controllers
             new UserInfo{UserName = "SampleB", Password = "PasswordB", IsAdmin = false},
             new UserInfo{UserName = "SampleC", Password = "PasswordC", IsAdmin = false}
         };
+
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public ActionResult<List<UserInfo>> Get()
         {
-            return userLogic.GetAllUsers();
+            users = userLogic.GetAllUsers();
+            return Ok(users);
             //return Ok(users);
         }
         [HttpGet("name")]
