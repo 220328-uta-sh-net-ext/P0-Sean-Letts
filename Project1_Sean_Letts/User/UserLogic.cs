@@ -132,5 +132,38 @@ namespace User
             Console.WriteLine("Please press enter to continue.");
             Console.ReadLine();
         }
+
+        public async Task<List<UserInfo>> GetAllUsersAsync()
+        {
+            string commandString = "SELECT * FROM Users;";
+
+            using SqlConnection connection = new(connectionString);
+            using SqlCommand command = new(commandString, connection);
+            IDataAdapter adapter = new SqlDataAdapter(command);
+            DataSet dataSet = new();
+            try
+            {
+                await connection.OpenAsync();
+                adapter.Fill(dataSet); // this sends the query. DataAdapter uses a DataReader to read.
+                await connection.CloseAsync();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            var usersd = new List<UserInfo>();
+
+            DataColumn levelColumn = dataSet.Tables[0].Columns[2];
+            foreach (DataRow row in dataSet.Tables[0].Rows)
+            {
+                usersd.Add(new UserInfo
+                {
+                    UserName = (string)row["Username"],
+                    Password = (string)row["Password"],
+                    IsAdmin = (bool)row["isAdmin"]
+                });
+            }
+            return usersd;
+        }
     }
 }

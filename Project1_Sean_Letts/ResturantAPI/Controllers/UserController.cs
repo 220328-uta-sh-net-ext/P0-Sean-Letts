@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Caching.Memory;
 using User;
 
@@ -11,20 +12,15 @@ namespace ResturantAPI.Controllers
     public class UserController : ControllerBase
     {
         private IUserLogic userLogic;
-        //private IMemoryCache memoryCache;
+        private IMemoryCache memoryCache;
 
-        public UserController(UserLogic userLogic)
+        private static List<UserInfo> users = new List<UserInfo>();
+
+        public UserController(UserLogic userLogic, IMemoryCache memoryCache)
         {
             this.userLogic = userLogic;
-            //this.memoryCache = memoryCache;
+            this.memoryCache = memoryCache;
         }
-
-        private static List<UserInfo> users = new List<UserInfo>
-        {
-            new UserInfo{UserName = "SampleA", Password = "PasswordA", IsAdmin = false},
-            new UserInfo{UserName = "SampleB", Password = "PasswordB", IsAdmin = false},
-            new UserInfo{UserName = "SampleC", Password = "PasswordC", IsAdmin = false}
-        };
 
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -40,6 +36,31 @@ namespace ResturantAPI.Controllers
             }
             return Ok(users);
         }
+
+        [HttpGet]
+        [Route("Async Get All")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult<List<UserInfo>>> GetAsync()
+        {
+            try
+            {
+                if (!memoryCache.TryGetValue("users", out users))
+                {
+                    users = await userLogic.GetAllUsersAsync();
+                    memoryCache.Set("users", users, new TimeSpan(0, 1, 0));
+                }
+            }
+            catch (SqlException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            return Ok(users);
+        }
+
         [HttpGet("name")]
         [ProducesResponseType(200, Type = typeof(UserInfo))]
         [ProducesResponseType(404)]

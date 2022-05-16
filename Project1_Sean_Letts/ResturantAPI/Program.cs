@@ -8,7 +8,7 @@ string connectionString = File.ReadAllText(connectionStringFilePath);
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+builder.Services.AddMemoryCache();
 builder.Services.AddControllers(options => options.RespectBrowserAcceptHeader = true)
     .AddXmlSerializerFormatters();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -17,9 +17,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<UserLogic>(userLogic => new UserLogic(connectionString));
 builder.Services.AddScoped<ResturantLogic>(resLogic => new ResturantLogic(connectionString));
-//builder.Services.AddScoped<IUserLogic>(ulogic => new UserLogic(connectionString));
-//builder.Services.AddScoped<ResturantLogic>(reslogic => new ResturantLogic(connectionString));
-//builder.Services.AddScoped<ReviewLogic>(revlogic => new ReviewLogic(connectionString));
+builder.Services.AddScoped<ReviewLogic>(revLogic => new ReviewLogic(connectionString));
 
 var app = builder.Build();
 app.Logger.LogInformation("App Started");
