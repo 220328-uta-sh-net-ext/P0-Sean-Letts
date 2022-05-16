@@ -18,7 +18,6 @@ namespace Resturant
     {
         public class ReviewLogic
         {
-            private const string filepath = "C:/Users/Owner/Desktop/Revature/Sean-Letts/Project1_Sean_Letts/User/UserDatabase/";
             private readonly string connectionString;
             public ReviewLogic(string connectionString)
             {

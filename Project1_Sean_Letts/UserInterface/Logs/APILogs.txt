@@ -10,3 +10,10 @@
 2022-05-16 13:58:57.991 -07:00 [INF] Good request at Get User.
 2022-05-16 13:59:15.534 -07:00 [INF] Unauthorized user attempted access.
 2022-05-16 13:59:20.993 -07:00 [INF] Authorized user given token.
+2022-05-16 14:26:16.124 -07:00 [INF] Good request, get all reviews.
+2022-05-16 14:26:26.261 -07:00 [INF] Entered and exited get resturants with no troubles.
+2022-05-16 14:26:31.704 -07:00 [INF] Resturant memory cache reset.
+2022-05-16 14:26:31.704 -07:00 [INF] GetAsync Resturant was a success
+2022-05-16 15:28:12.017 -07:00 [INF] Entered and exited get resturants with no troubles.
+2022-05-16 15:28:16.721 -07:00 [INF] Good request, get all reviews.
+2022-05-16 15:28:30.418 -07:00 [INF] Authorized user given token.

@@ -11,9 +11,6 @@ namespace ResturantAPI.Controllers
     [ApiController]
     public class ResturantController : ControllerBase
     {
-        private const string filepath = "C:/Users/Owner/Desktop/Revature/Sean-Letts/Project0_Sean_Letts/User/UserDatabase/";
-        private readonly string connectionString;
-
         private ResturantLogic resLogic;
         private IMemoryCache memoryCache;
 

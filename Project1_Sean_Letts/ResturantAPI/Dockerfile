@@ -8,6 +8,9 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["ResturantAPI/ResturantAPI.csproj", "ResturantAPI/"]
+COPY ["User/User.csproj", "User/"]
+COPY ["Resturant/Resturant.csproj", "Resturant/"]
+COPY ["Models/Models.csproj", "Models/"]
 RUN dotnet restore "ResturantAPI/ResturantAPI.csproj"
 COPY . .
 WORKDIR "/src/ResturantAPI"

@@ -9,12 +9,12 @@ using ResturantAPI.Repository;
 using System.Reflection;
 using System.Text;
 using User;
-
-string connectionStringFilePath = "C:/Users/Owner/Desktop/Revature/Sean-Letts/Project1_Sean_Letts/User/UserDatabase/SQLinfo.txt";
+//Users/Owner/Desktop/Revature/Sean-Letts/Project1_Sean_Letts/User/UserDatabase
+string connectionStringFilePath = "../User/UserDatabase/SQLinfo.txt";
 string connectionString = File.ReadAllText(connectionStringFilePath);
 
 Log.Logger = new LoggerConfiguration()
-    .WriteTo.File("C:/Users/Owner/Desktop/Revature/Sean-Letts/Project1_Sean_Letts/UserInterface/Logs/APILogs.txt").MinimumLevel.Debug().MinimumLevel.Information()
+    .WriteTo.File("../UserInterface/Logs/APILogs.txt").MinimumLevel.Debug().MinimumLevel.Information()
     .CreateLogger();
 
 var builder = WebApplication.CreateBuilder(args);
