@@ -18,7 +18,11 @@ namespace ResturantAPI.Controllers
         private IMemoryCache memoryCache;
 
         private static List<ResturantInfo> rests = new List<ResturantInfo>();
-
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="resLogic"></param>
+        /// <param name="memoryCache"></param>
         public ResturantController(ResturantLogic resLogic, IMemoryCache memoryCache)
         {
             this.resLogic = resLogic;

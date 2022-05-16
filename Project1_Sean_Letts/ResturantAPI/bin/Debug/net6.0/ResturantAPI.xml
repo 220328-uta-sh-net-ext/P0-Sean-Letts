@@ -4,6 +4,13 @@
         <name>ResturantAPI</name>
     </assembly>
     <members>
+        <member name="M:ResturantAPI.Controllers.ResturantController.#ctor(Resturant.ResturantLogic,Microsoft.Extensions.Caching.Memory.IMemoryCache)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="resLogic"></param>
+            <param name="memoryCache"></param>
+        </member>
         <member name="M:ResturantAPI.Controllers.ResturantController.Get">
             <summary>
             Returns all Resturants
@@ -44,6 +51,18 @@
             <param name="res"></param>
             <returns> 201 if created, 400 if bad request</returns>
         </member>
+        <member name="M:ResturantAPI.Controllers.ReviewController.Get">
+            <summary>
+            Displays all reviews
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ResturantAPI.Controllers.ReviewController.GetAsync">
+            <summary>
+            Displays all reviews w/ an asynchronous method
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:ResturantAPI.Controllers.UserController.#ctor(User.UserLogic,Microsoft.Extensions.Caching.Memory.IMemoryCache,ResturantAPI.Repository.IJWTManagerRepo)">
             <summary>
             Takes in the params to construct the User Controller
@@ -73,6 +92,13 @@
             Register a new user to the database
             </summary>
             <param name="user"></param>
+        </member>
+        <member name="M:ResturantAPI.Controllers.UserController.Authenticate(User.UserInfo)">
+            <summary>
+            Gets the authentication key needed to access other features in the program.
+            </summary>
+            <param name="user"></param>
+            <returns>Authentication Key if you use a real username and password.</returns>
         </member>
     </members>
 </doc>

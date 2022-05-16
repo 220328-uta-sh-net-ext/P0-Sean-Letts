@@ -21,8 +21,12 @@ namespace ResturantAPI.Controllers
             this.revLogic = revLogic;
             this.memoryCache = memoryCache;
         }
-
+        /// <summary>
+        /// Displays all reviews
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
+        [Route("Get All Reviews")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public ActionResult<List<ReviewsInfo>> Get()
         {
@@ -36,10 +40,12 @@ namespace ResturantAPI.Controllers
             }
             return Ok(revs);
         }
-
-
+        /// <summary>
+        /// Displays all reviews w/ an asynchronous method
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
-        [Route("Async Get All Resturants")]
+        [Route("Async Get All Reviews")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<List<ResturantInfo>>> GetAsync()
         {

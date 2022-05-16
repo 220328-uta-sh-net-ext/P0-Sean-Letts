@@ -129,7 +129,11 @@ namespace ResturantAPI.Controllers
             userLogic.addNewUser(user);
             return CreatedAtAction("Get", user);
         }
-        
+        /// <summary>
+        /// Gets the authentication key needed to access other features in the program.
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns>Authentication Key if you use a real username and password.</returns>
         [AllowAnonymous]
         [HttpPost]
         [Route("authenticate")]
