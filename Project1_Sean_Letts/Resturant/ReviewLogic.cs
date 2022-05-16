@@ -134,6 +134,40 @@ namespace Resturant
                     Console.WriteLine("You entered an invalid name. Please try again.");
                 }
             }
+
+            public async Task<List<ReviewsInfo>> GetAllReviewsAsync()
+            {
+                string commandString = "SELECT * FROM reviews;";
+
+                using SqlConnection connection = new(connectionString);
+                using SqlCommand command = new(commandString, connection);
+                IDataAdapter adapter = new SqlDataAdapter(command);
+                DataSet dataSet = new();
+                try
+                {
+                    await connection.OpenAsync();
+                    adapter.Fill(dataSet); // this sends the query. DataAdapter uses a DataReader to read.
+                    await connection.CloseAsync();
+                }
+                catch (Exception ex)
+                {
+                    throw;
+                }
+
+                var reviews = new List<ReviewsInfo>();
+
+                DataColumn levelColumn = dataSet.Tables[0].Columns[2];
+                foreach (DataRow row in dataSet.Tables[0].Rows)
+                {
+                    reviews.Add(new ReviewsInfo
+                    {
+                        ResturantId = (int)row["ResturantID"],
+                        rating = (decimal)row["Rating"],
+                        reviewtext = (string)row["Review"]
+                    });
+                }
+                return reviews;
+            }
         }
     }
 

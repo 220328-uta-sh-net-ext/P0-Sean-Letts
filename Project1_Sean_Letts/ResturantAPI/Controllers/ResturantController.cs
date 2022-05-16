@@ -46,10 +46,10 @@ namespace ResturantAPI.Controllers
         {
             try
             {
-                if (!memoryCache.TryGetValue("users", out rests))
+                if (!memoryCache.TryGetValue("resturant", out rests))
                 {
                     rests = await resLogic.GetAllResturantsAsync();
-                    memoryCache.Set("users", rests, new TimeSpan(0, 1, 0));
+                    memoryCache.Set("resturant", rests, new TimeSpan(0, 1, 0));
                 }
             }
             catch (SqlException ex)
