@@ -1,0 +1,4 @@
+﻿2022-05-16 12:57:26.566 -07:00 [INF] Entered and exited get resturants with no troubles.
+2022-05-16 12:57:35.908 -07:00 [INF] Resturant memory cache reset.
+2022-05-16 12:57:35.908 -07:00 [INF] GetAsync Resturant was a success
+2022-05-16 13:02:32.222 -07:00 [INF] Search Resturant by name was a success

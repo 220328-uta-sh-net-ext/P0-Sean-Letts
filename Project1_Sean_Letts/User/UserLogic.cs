@@ -132,7 +132,10 @@ namespace User
             Console.WriteLine("Please press enter to continue.");
             Console.ReadLine();
         }
-
+        /// <summary>
+        /// Gets a list of all users async
+        /// </summary>
+        /// <returns>List of users </returns>
         public async Task<List<UserInfo>> GetAllUsersAsync()
         {
             string commandString = "SELECT * FROM Users;";

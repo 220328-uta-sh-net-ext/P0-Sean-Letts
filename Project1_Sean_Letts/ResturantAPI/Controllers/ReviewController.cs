@@ -37,6 +37,7 @@ namespace ResturantAPI.Controllers
             return Ok(revs);
         }
 
+
         [HttpGet]
         [Route("Async Get All Resturants")]
         [ProducesResponseType(StatusCodes.Status200OK)]

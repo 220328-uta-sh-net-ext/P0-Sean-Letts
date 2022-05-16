@@ -1,3 +1,5 @@
+global using Serilog;
+
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -10,6 +12,10 @@ using User;
 
 string connectionStringFilePath = "C:/Users/Owner/Desktop/Revature/Sean-Letts/Project1_Sean_Letts/User/UserDatabase/SQLinfo.txt";
 string connectionString = File.ReadAllText(connectionStringFilePath);
+
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.File("C:/Users/Owner/Desktop/Revature/Sean-Letts/Project1_Sean_Letts/UserInterface/Logs/APILogs.txt").MinimumLevel.Debug().MinimumLevel.Information()
+    .CreateLogger();
 
 var builder = WebApplication.CreateBuilder(args);
 

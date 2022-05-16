@@ -81,18 +81,34 @@ namespace ResturantAPI.Controllers
         }
 
         /// <summary>
-        /// Displays all usernames with a certain aspect as a part of it. Must be an admin to see.
+        /// Displays all usernames with 'name' in it. Must be an admin to see.
         /// </summary>
         /// <param name="name">Takes in a username and checks to see if it's in the db</param>
         [Authorize(Roles = "Admin")]
         [HttpGet("name")]
         [ProducesResponseType(200, Type = typeof(UserInfo))]
+        [ProducesResponseType(400)]
         [ProducesResponseType(404)]
-        public ActionResult<UserInfo> Get(string name)
+        public async Task<ActionResult<UserInfo>> Get(string name)
         {
-            var allUsers = userLogic.GetAllUsers();
-            var answer = allUsers.Where(r => r.UserName.Contains(name));
-            if (answer == null)
+            try
+            {
+                if (!memoryCache.TryGetValue("users", out users))
+                {
+                    users = await userLogic.GetAllUsersAsync();
+                    memoryCache.Set("users", users, new TimeSpan(0, 1, 0));
+                }
+            }
+            catch (SqlException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            var answer = users.Where(r => r.UserName.Contains(name)).ToList();
+            if (answer == null || answer.Count < 1)
             {
                 return NotFound($"User {name} not found in DB");
             }
@@ -117,6 +133,8 @@ namespace ResturantAPI.Controllers
         [AllowAnonymous]
         [HttpPost]
         [Route("authenticate")]
+        [ProducesResponseType(201)]
+        [ProducesResponseType(400)]
         public ActionResult Authenticate([FromQuery] UserInfo user)
         {
             var token = JWTrepo.Authenticate(user);

@@ -4,6 +4,46 @@
         <name>ResturantAPI</name>
     </assembly>
     <members>
+        <member name="M:ResturantAPI.Controllers.ResturantController.Get">
+            <summary>
+            Returns all Resturants
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ResturantAPI.Controllers.ResturantController.GetAsync">
+            <summary>
+            Returns all resturants w/ an asynchronous method
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ResturantAPI.Controllers.ResturantController.GetN(System.String)">
+            <summary>
+            Find a resturant by Name. Displays all resturants w/ matching name
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ResturantAPI.Controllers.ResturantController.GetA(System.String)">
+            <summary>
+            Find a resturant by Address. Displays all resturants w/ matching address
+            </summary>
+            <param name="address"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ResturantAPI.Controllers.ResturantController.GetZ(System.Int32)">
+            <summary>
+            Find a resturant by Zipcode. Displays all resturants w/ matching zipcode
+            </summary>
+            <param name="zipcode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ResturantAPI.Controllers.ResturantController.Post(Resturant.ResturantInfo)">
+            <summary>
+            Add a new Resturant to the db. Requires logging in.
+            </summary>
+            <param name="res"></param>
+            <returns> 201 if created, 400 if bad request</returns>
+        </member>
         <member name="M:ResturantAPI.Controllers.UserController.#ctor(User.UserLogic,Microsoft.Extensions.Caching.Memory.IMemoryCache,ResturantAPI.Repository.IJWTManagerRepo)">
             <summary>
             Takes in the params to construct the User Controller
@@ -24,7 +64,7 @@
         </member>
         <member name="M:ResturantAPI.Controllers.UserController.Get(System.String)">
             <summary>
-            Displays all usernames with a certain aspect as a part of it. Must be an admin to see.
+            Displays all usernames with 'name' in it. Must be an admin to see.
             </summary>
             <param name="name">Takes in a username and checks to see if it's in the db</param>
         </member>

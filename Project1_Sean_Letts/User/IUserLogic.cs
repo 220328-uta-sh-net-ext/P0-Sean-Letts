@@ -32,7 +32,10 @@ namespace User
         /// displays that user's details
         /// </summary>
         public void searchForUser();
-
+        /// <summary>
+        /// Gets a list of all users async
+        /// </summary>
+        /// <returns>List of users </returns>
         public Task<List<UserInfo>> GetAllUsersAsync();
     }
 }

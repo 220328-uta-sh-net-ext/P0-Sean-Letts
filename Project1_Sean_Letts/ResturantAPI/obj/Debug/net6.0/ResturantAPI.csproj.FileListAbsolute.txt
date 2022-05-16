@@ -67,3 +67,5 @@ C:\Users\Owner\Desktop\Revature\Sean-Letts\Project1_Sean_Letts\ResturantAPI\bin\
 C:\Users\Owner\Desktop\Revature\Sean-Letts\Project1_Sean_Letts\ResturantAPI\bin\Debug\net6.0\Models.pdb
 C:\Users\Owner\Desktop\Revature\Sean-Letts\Project1_Sean_Letts\ResturantAPI\bin\Debug\net6.0\ResturantAPI.xml
 C:\Users\Owner\Desktop\Revature\Sean-Letts\Project1_Sean_Letts\ResturantAPI\obj\Debug\net6.0\ResturantAPI.xml
+C:\Users\Owner\Desktop\Revature\Sean-Letts\Project1_Sean_Letts\ResturantAPI\bin\Debug\net6.0\Serilog.dll
+C:\Users\Owner\Desktop\Revature\Sean-Letts\Project1_Sean_Letts\ResturantAPI\bin\Debug\net6.0\Serilog.Sinks.File.dll
