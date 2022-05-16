@@ -153,7 +153,11 @@ namespace ResturantAPI.Controllers
         public ActionResult Post([FromBody] ResturantInfo res)
         {
             if (res == null)
+            {
+                Log.Information("Bad Request to add a new resturant.");
                 return BadRequest("Invalid Resturant. Please try again with valid values");
+            }
+            Log.Information("Added new resturant.");
             resLogic.addNewResturant(res);
             return CreatedAtAction("Get", res);
         }

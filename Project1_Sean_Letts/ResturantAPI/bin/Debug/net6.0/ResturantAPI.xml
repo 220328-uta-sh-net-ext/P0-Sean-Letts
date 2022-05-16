@@ -63,6 +63,15 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:ResturantAPI.Controllers.ReviewController.Post(System.String,System.Decimal,System.String)">
+            <summary>
+            Add a new review. Must be logged in.
+            </summary>
+            <param name="ResturantName"></param>
+            <param name="rating"></param>
+            <param name="reviewtext"></param>
+            <returns>Returns the review</returns>
+        </member>
         <member name="M:ResturantAPI.Controllers.UserController.#ctor(User.UserLogic,Microsoft.Extensions.Caching.Memory.IMemoryCache,ResturantAPI.Repository.IJWTManagerRepo)">
             <summary>
             Takes in the params to construct the User Controller

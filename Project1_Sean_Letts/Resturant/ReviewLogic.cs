@@ -134,7 +134,10 @@ namespace Resturant
                     Console.WriteLine("You entered an invalid name. Please try again.");
                 }
             }
-
+            /// <summary>
+            /// Gets all reviews from the DB async
+            /// </summary>
+            /// <returns></returns>
             public async Task<List<ReviewsInfo>> GetAllReviewsAsync()
             {
                 string commandString = "SELECT * FROM reviews;";
@@ -167,6 +170,66 @@ namespace Resturant
                     });
                 }
                 return reviews;
+            }
+            /// <summary>
+            /// Async adding a review to the db
+            /// </summary>
+            /// <param name="name"></param>
+            /// <param name="rating"></param>
+            /// <param name="reviewtext"></param>
+            /// <returns>The new Review to be added</returns>
+            /// <exception cref="Exception">throws exception when there's an issue w/ user input</exception>
+            public async Task<ReviewsInfo> AddNewReviewAPI(string name, decimal rating, string reviewtext)
+            {
+                if(name.Length == 0 || rating == 0 )
+                    throw new Exception("Empty Values in name or rating");
+                ResturantLogic tempLogic = new ResturantLogic(connectionString);
+                var resturants = tempLogic.GetAllResturants();
+                int count = 1;
+                foreach (ResturantInfo res in resturants)
+                {
+                    if (res.name == name)
+                    {
+                        bool inloop2 = true;
+                        while (inloop2)
+                        {
+
+                            if (rating >= 1.00m && rating <= 5.00m)
+                            {
+
+                                string commandString = "INSERT INTO reviews (ResturantID, Rating, Review) " +
+                                "VALUES (@idval, @rate, @reviewtxt);";
+                                using SqlConnection connection = new(connectionString);
+                                using SqlCommand command = new(commandString, connection);
+
+                                ReviewsInfo temp = new ReviewsInfo{
+                                    ResturantId = count,
+                                    rating = rating,
+                                    reviewtext = reviewtext };
+                                command.Parameters.AddWithValue("@idval", count);
+                                command.Parameters.AddWithValue("@rate", rating);
+                                command.Parameters.AddWithValue("@reviewtxt", reviewtext);
+                                try
+                                {
+                                    await connection.OpenAsync();
+                                    await command.ExecuteNonQueryAsync();
+                                    await connection.CloseAsync();
+                                }
+                                catch (Exception ex)
+                                {
+                                    throw ex;
+                                }
+                                return temp;
+                            }
+                            else
+                            {
+                                throw new Exception("Rating is either below 1.0, or above 5.0");
+                            }
+                        }
+                    }
+                    count++;
+                }
+                throw new Exception($"Cannot find a resturant named {name} in DB"); 
             }
         }
     }

@@ -2,3 +2,7 @@
 2022-05-16 12:57:35.908 -07:00 [INF] Resturant memory cache reset.
 2022-05-16 12:57:35.908 -07:00 [INF] GetAsync Resturant was a success
 2022-05-16 13:02:32.222 -07:00 [INF] Search Resturant by name was a success
+2022-05-16 13:49:10.118 -07:00 [INF] Good request, get all reviews.
+2022-05-16 13:49:18.091 -07:00 [INF] Entered and exited get resturants with no troubles.
+2022-05-16 13:51:37.530 -07:00 [INF] Illegal attempt at making admin account.
+2022-05-16 13:51:44.207 -07:00 [INF] Illegal attempt at making admin account.

@@ -45,8 +45,10 @@ namespace ResturantAPI.Controllers
             }
             catch (Exception ex)
             {
+                Log.Information("Bad Request exception in get user.");
                 return BadRequest(ex.Message);
             }
+            Log.Information("Good request at Get User.");
             return Ok(users);
         }
 
@@ -67,16 +69,20 @@ namespace ResturantAPI.Controllers
                 {
                     users = await userLogic.GetAllUsersAsync();
                     memoryCache.Set("users", users, new TimeSpan(0, 1, 0));
+                    Log.Information("Set users list in get user async.");
                 }
             }
             catch (SqlException ex)
             {
+                Log.Information("Not Found exception in get user async.");
                 return NotFound(ex.Message);
             }
             catch (Exception ex)
             {
+                Log.Information("Bad Request exception in get user async.");
                 return BadRequest(ex.Message);
             }
+            Log.Information("Success at get users async.");
             return Ok(users);
         }
 
@@ -97,21 +103,26 @@ namespace ResturantAPI.Controllers
                 {
                     users = await userLogic.GetAllUsersAsync();
                     memoryCache.Set("users", users, new TimeSpan(0, 1, 0));
+                    Log.Information("Set users in program.");
                 }
             }
             catch (SqlException ex)
             {
+                Log.Information("Not found exception in get user by name.");
                 return NotFound(ex.Message);
             }
             catch (Exception ex)
             {
+                Log.Information("Bad Request exception in get user by name.");
                 return BadRequest(ex.Message);
             }
             var answer = users.Where(r => r.UserName.Contains(name)).ToList();
             if (answer == null || answer.Count < 1)
             {
+                Log.Information($"Not Found {name} in get user by name.");
                 return NotFound($"User {name} not found in DB");
             }
+            Log.Information("Get username successful.");
             return Ok(answer);
         }
         /// <summary>
@@ -124,9 +135,25 @@ namespace ResturantAPI.Controllers
         [ProducesResponseType(400)]
         public ActionResult AddNewUser([FromQuery] UserInfo user)
         {
-            if (user.UserName == null || user.Password == null)
+            if (user.UserName == String.Empty || user.Password == String.Empty)
+            {
+                Log.Information("Bad Request at add new user.");
                 return BadRequest("Invalid User. Please try again with valid values");
-            userLogic.addNewUser(user);
+            }
+            if(user.UserName.ToLower() == "admin")
+            {
+                Log.Information("Illegal attempt at making admin account.");
+                return BadRequest("Illegal attempt at making admin account");
+            }
+            try
+            {
+                userLogic.addNewUser(user);
+            }
+            catch(Exception ex)
+            {
+                Log.Information("Excetion occured in AddNewUser: " + ex);
+            }
+            Log.Information("New user created w/ username: " + user.UserName);
             return CreatedAtAction("Get", user);
         }
         /// <summary>
@@ -144,8 +171,10 @@ namespace ResturantAPI.Controllers
             var token = JWTrepo.Authenticate(user);
             if(token == null)
             {
+                Log.Information("Unauthorized user attempted access.");
                 return Unauthorized("You do not have proper autherization to see this.");
             }
+            Log.Information("Authorized user given token.");
             return Ok(token);
         }
     }

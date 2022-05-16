@@ -36,8 +36,10 @@ namespace ResturantAPI.Controllers
             }
             catch (Exception ex)
             {
+                Log.Information("Bad request, get all reviews.");
                 return BadRequest(ex.Message);
             }
+            Log.Information("Good request, get all reviews.");
             return Ok(revs);
         }
         /// <summary>
@@ -55,17 +57,47 @@ namespace ResturantAPI.Controllers
                 {
                     revs = await revLogic.GetAllReviewsAsync();
                     memoryCache.Set("review", revs, new TimeSpan(0, 1, 0));
+                    Log.Information("Set review memory.");
                 }
             }
             catch (SqlException ex)
             {
+                Log.Information("Not found, get all reviews async.");
                 return NotFound(ex.Message);
             }
             catch (Exception ex)
             {
+                Log.Information("Bad Request, get all reviews async.");
                 return BadRequest(ex.Message);
             }
+            Log.Information("Good request at get all reviews async.");
             return Ok(revs);
+        }
+        /// <summary>
+        /// Add a new review. Must be logged in.
+        /// </summary>
+        /// <param name="ResturantName"></param>
+        /// <param name="rating"></param>
+        /// <param name="reviewtext"></param>
+        /// <returns>Returns the review</returns>
+        [HttpPost]
+        [Route("Add New Review")]
+        [ProducesResponseType(201)]
+        [ProducesResponseType(400)]
+        public async Task<ActionResult> Post([FromQuery] string ResturantName, decimal rating, string reviewtext)
+        {
+            ReviewsInfo temp = new ReviewsInfo();
+            try
+            {
+                temp = await revLogic.AddNewReviewAPI(ResturantName, rating, reviewtext);
+            }
+            catch(Exception ex)
+            {
+                Log.Information("Bad request, add new review.");
+                return BadRequest(ex.Message);
+            }
+            Log.Information("Added new review.");
+            return Ok(temp);
         }
     }
 }
