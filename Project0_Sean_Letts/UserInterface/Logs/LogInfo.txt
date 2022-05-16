@@ -146,3 +146,6 @@
 2022-05-11 12:09:17.816 -07:00 [INF] Displaying Main Menu to the user
 2022-05-11 12:09:21.440 -07:00 [INF] Displaying Login Menu to the user
 2022-05-11 12:09:22.598 -07:00 [INF] Validates user
+2022-05-16 11:28:40.008 -07:00 [INF] Displaying Main Menu to the user
+2022-05-16 11:28:47.803 -07:00 [INF] Displaying Login Menu to the user
+2022-05-16 11:28:49.213 -07:00 [INF] Validates user
