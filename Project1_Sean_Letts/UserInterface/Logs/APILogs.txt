@@ -6,3 +6,7 @@
 2022-05-16 13:49:18.091 -07:00 [INF] Entered and exited get resturants with no troubles.
 2022-05-16 13:51:37.530 -07:00 [INF] Illegal attempt at making admin account.
 2022-05-16 13:51:44.207 -07:00 [INF] Illegal attempt at making admin account.
+2022-05-16 13:58:20.821 -07:00 [INF] Authorized user given token.
+2022-05-16 13:58:57.991 -07:00 [INF] Good request at Get User.
+2022-05-16 13:59:15.534 -07:00 [INF] Unauthorized user attempted access.
+2022-05-16 13:59:20.993 -07:00 [INF] Authorized user given token.
