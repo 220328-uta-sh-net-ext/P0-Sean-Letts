@@ -143,8 +143,7 @@ namespace ResturantAPI.Controllers
         /// <param name="res"></param>
         /// <returns> 201 if created, 400 if bad request</returns>
         [Authorize]
-        [HttpPost]
-        [HttpGet("Add new Resturant")]
+        [HttpPost("Add new Resturant")]
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
         public ActionResult Post([FromBody] ResturantInfo res)

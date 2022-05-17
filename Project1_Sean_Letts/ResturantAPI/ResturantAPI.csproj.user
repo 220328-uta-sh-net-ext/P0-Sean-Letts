@@ -4,7 +4,7 @@
     <ActiveDebugProfile>ResturantAPI</ActiveDebugProfile>
     <Controller_SelectedScaffolderID>ApiControllerEmptyScaffolder</Controller_SelectedScaffolderID>
     <Controller_SelectedScaffolderCategoryPath>root/Common/Api</Controller_SelectedScaffolderCategoryPath>
-    <NameOfLastUsedPublishProfile>registry.hub.docker.com_SAL-Resturant</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>C:\Users\Owner\Desktop\Revature\Sean-Letts\Project1_Sean_Letts\ResturantAPI\Properties\PublishProfiles\registry.hub.docker.com_sletts.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>

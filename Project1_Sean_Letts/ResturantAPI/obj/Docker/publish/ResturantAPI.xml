@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ResturantAPI</name>
+    </assembly>
+    <members>
+        <member name="M:ResturantAPI.Controllers.ResturantController.#ctor(Resturant.ResturantLogic,Microsoft.Extensions.Caching.Memory.IMemoryCache)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="resLogic"></param>
+            <param name="memoryCache"></param>
+        </member>
+        <member name="M:ResturantAPI.Controllers.ResturantController.Get">
+            <summary>
+            Returns all Resturants
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ResturantAPI.Controllers.ResturantController.GetAsync">
+            <summary>
+            Returns all resturants w/ an asynchronous method
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ResturantAPI.Controllers.ResturantController.GetN(System.String)">
+            <summary>
+            Find a resturant by Name. Displays all resturants w/ matching name
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ResturantAPI.Controllers.ResturantController.GetA(System.String)">
+            <summary>
+            Find a resturant by Address. Displays all resturants w/ matching address
+            </summary>
+            <param name="address"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ResturantAPI.Controllers.ResturantController.GetZ(System.Int32)">
+            <summary>
+            Find a resturant by Zipcode. Displays all resturants w/ matching zipcode
+            </summary>
+            <param name="zipcode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ResturantAPI.Controllers.ResturantController.Post(Resturant.ResturantInfo)">
+            <summary>
+            Add a new Resturant to the db. Requires logging in.
+            </summary>
+            <param name="res"></param>
+            <returns> 201 if created, 400 if bad request</returns>
+        </member>
+        <member name="M:ResturantAPI.Controllers.ReviewController.Get">
+            <summary>
+            Displays all reviews
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ResturantAPI.Controllers.ReviewController.GetAsync">
+            <summary>
+            Displays all reviews w/ an asynchronous method
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ResturantAPI.Controllers.ReviewController.Post(System.String,System.Decimal,System.String)">
+            <summary>
+            Add a new review. Must be logged in.
+            </summary>
+            <param name="ResturantName"></param>
+            <param name="rating"></param>
+            <param name="reviewtext"></param>
+            <returns>Returns the review</returns>
+        </member>
+        <member name="M:ResturantAPI.Controllers.UserController.#ctor(User.UserLogic,Microsoft.Extensions.Caching.Memory.IMemoryCache,ResturantAPI.Repository.IJWTManagerRepo)">
+            <summary>
+            Takes in the params to construct the User Controller
+            </summary>
+            <param name="userLogic"></param>
+            <param name="memoryCache"></param>
+            <param name="JWTrepo"></param>
+        </member>
+        <member name="M:ResturantAPI.Controllers.UserController.Get">
+            <summary>
+            Displays all Users. Must be an admin to see.
+            </summary>
+        </member>
+        <member name="M:ResturantAPI.Controllers.UserController.GetAsync">
+            <summary>
+            Displays all Users with an asynchronous method. Must be an admin to see.
+            </summary>
+        </member>
+        <member name="M:ResturantAPI.Controllers.UserController.Get(System.String)">
+            <summary>
+            Displays all usernames with 'name' in it. Must be an admin to see.
+            </summary>
+            <param name="name">Takes in a username and checks to see if it's in the db</param>
+        </member>
+        <member name="M:ResturantAPI.Controllers.UserController.AddNewUser(User.UserInfo)">
+            <summary>
+            Register a new user to the database
+            </summary>
+            <param name="user"></param>
+        </member>
+        <member name="M:ResturantAPI.Controllers.UserController.Authenticate(User.UserInfo)">
+            <summary>
+            Gets the authentication key needed to access other features in the program.
+            </summary>
+            <param name="user"></param>
+            <returns>Authentication Key if you use a real username and password.</returns>
+        </member>
+    </members>
+</doc>

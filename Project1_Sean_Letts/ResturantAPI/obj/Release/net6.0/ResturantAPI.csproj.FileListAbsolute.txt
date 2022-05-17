@@ -69,3 +69,5 @@ C:\Users\Owner\Desktop\Revature\Sean-Letts\Project1_Sean_Letts\ResturantAPI\obj\
 C:\Users\Owner\Desktop\Revature\Sean-Letts\Project1_Sean_Letts\ResturantAPI\obj\Release\net6.0\ResturantAPI.pdb
 C:\Users\Owner\Desktop\Revature\Sean-Letts\Project1_Sean_Letts\ResturantAPI\obj\Release\net6.0\ResturantAPI.genruntimeconfig.cache
 C:\Users\Owner\Desktop\Revature\Sean-Letts\Project1_Sean_Letts\ResturantAPI\obj\Release\net6.0\ref\ResturantAPI.dll
+C:\Users\Owner\Desktop\Revature\Sean-Letts\Project1_Sean_Letts\ResturantAPI\bin\Release\net6.0\Docker.DotNet.dll
+C:\Users\Owner\Desktop\Revature\Sean-Letts\Project1_Sean_Letts\ResturantAPI\bin\Release\net6.0\Newtonsoft.Json.dll
