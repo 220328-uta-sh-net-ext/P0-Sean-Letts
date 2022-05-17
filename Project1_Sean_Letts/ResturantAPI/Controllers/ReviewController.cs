@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Caching.Memory;
@@ -80,6 +81,7 @@ namespace ResturantAPI.Controllers
         /// <param name="rating"></param>
         /// <param name="reviewtext"></param>
         /// <returns>Returns the review</returns>
+        [Authorize]
         [HttpPost]
         [Route("Add New Review")]
         [ProducesResponseType(201)]
