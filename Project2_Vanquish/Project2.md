@@ -9,6 +9,9 @@
 - Make a user account
 - Drawing on canvas
 
+## Building/Developing the product
+- Trello
+
 ## Todo for the project
 - Logging in/logging out functionality
 - People can draw a pokemon in the website (canvas)
