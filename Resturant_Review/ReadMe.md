@@ -2,44 +2,45 @@
 
 ## Project Description
 
-Here goes your awesome project description!
+Resturant Reviwer is an API where users can create user accounts. Anyone can see all of the resturants and reviews. Admins can see all users. Any user can put a new resturant to be reviewed or write a review.
 
 ## Technologies Used
 
-* Tech 1 - version 1.0
-* Tech 2 - version 2.0
-* Tech 3 - version 3.0
+* C#
+* Xunit or NUnit
+* SQLServer DB
+* ADO.Net
+* Asp.Net Core Web Api
+* Azure App Service
+* Serilog 
 
 ## Features
 
 List of features ready and TODOs for future development
-* Awesome feature 1
-* Awesome feature 2
-* Awesome feature 3
+* Add a new user
+* Ability to search user as admin
+* Display details of a restaurant for user
+* Add reviews to a restaurant as a user
+* View details of restaurants as a user
+* View reviews of restaurants as a user
+* Search restaurant (by name or zip code)
 
-To-do list:
-* Wow improvement to be done 1
-* Wow improvement to be done 2
+Todo:
+* Calculate reviews’ average rating for each restaurant
 
 ## Getting Started
-   
-(include git clone command)
-(include all environment setup steps)
 
-> Be sure to include BOTH Windows and Unix command  
-> Be sure to mention if the commands only work on a specific platform (eg. AWS, GCP)
+git clone https://github.com/220328-uta-sh-net-ext/Sean-Letts.git
+Open your Visual Stuido
+Select build at the top
+Observe the program running
 
-- All the `code` required to get started
-- Images of what it should look like
+or
 
-## Usage
+Go to https://resturantapitest.azurewebsites.net/swagger/index.html
+From here you can test the diffent functionalities.
+If you want to post something to the database outside of logging in, you will need to use Postman to do so.
+Get the authentication token after performing a successful login
+Put the token into the bearer token section in Postman
+Post a new resturant or review with the proper information attached. 
 
-> Here, you instruct other people on how to use your project after they’ve installed it. This would also be a good place to include screenshots of your project in action.
-
-## Contributors
-
-> Here list the people who have contributed to this project. (ignore this section, if its a solo project)
-
-## License
-
-This project uses the following license: [<license_name>](<link>).
